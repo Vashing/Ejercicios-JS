@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Encontrar Número Máximo</title>
+</head>
+<body>
+    <h1>Encontrar Número Maximo</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <form id="formMaximo">
+            <tr>
+                <th colspan="2">Mostrando el Número Maximo de un Arreglo</th>
+            </tr>
+            <tr>
+                <td>Ingresa los números separados por comas:</td>
+                <td><input type="text" id="maximoArreglo" name="maximoArreglo" required></td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td><div name="lblMostrar" id="lblMostrar"></div></td>
+            </tr>
+            <tr>
+                <td><a href="index.html" class="boton verde">Regresar</a></td>
+                <td><button type="submit" class="boton verde">Maximo</button></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        document.getElementById('formMaximo').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener los números ingresados y eliminar espacios adicionales
+            const numeros = document.getElementById('maximoArreglo').value
+                .split(',')
+                .map(num => num.trim())
+                .map(Number);
+
+            // Verificar que todos los elementos son números válidos
+            if (numeros.some(isNaN)) {
+                document.getElementById('lblMostrar').textContent = 'Por favor, ingresa un arreglo de números válido.';
+            } else {
+                const maximo = numeroMaximo(numeros);
+                document.getElementById('lblMostrar').textContent = maximo;
+            }
+        });
+
+        function numeroMaximo(arr) {
+            // Inicializar el número máximo con el primer elemento del arreglo
+            let maximo = arr[0];
+
+            // Recorrer el arreglo para encontrar el número máximo
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] > maximo) {
+                    maximo = arr[i];
+                }
+            }
+            return maximo;
+        }
+    </script>
+</body>
+</html>

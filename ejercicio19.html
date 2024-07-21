@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Encontrar Número Minimo</title>
+</head>
+<body>
+    <h1>Encontrar Número Minimo</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <form id="formMinimo">
+            <tr>
+                <th colspan="2">Mostrando el Número Minimo de un Arreglo</th>
+            </tr>
+            <tr>
+                <td>Ingresa los números separados por comas:</td>
+                <td><input type="text" id="minimoArreglo" name="minimoArreglo" required></td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td><div name="lblMostrar" id="lblMostrar"></div></td>
+            </tr>
+            <tr>
+                <td><a href="index.html" class="boton verde">Regresar</a></td>
+                <td><button type="submit" class="boton verde">Minimo</button></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        document.getElementById('formMinimo').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener los números ingresados y eliminar espacios adicionales
+            const numeros = document.getElementById('minimoArreglo').value
+                .split(',')
+                .map(num => num.trim())
+                .map(Number);
+
+            // Verificar que todos los elementos son números válidos
+            if (numeros.some(isNaN)) {
+                document.getElementById('lblMostrar').textContent = 'Por favor, ingresa un arreglo de números válido.';
+            } else {
+                const minimo = numeroMinimo(numeros);
+                document.getElementById('lblMostrar').textContent = minimo;
+            }
+        });
+
+        function numeroMinimo(arr) {
+            // Inicializar el número mínimo con el primer elemento del arreglo
+            let minimo = arr[0];
+
+            // Recorrer el arreglo para encontrar el número mínimo
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] < minimo) {
+                    minimo = arr[i];
+                }
+            }
+            return minimo;
+        }
+    </script>
+</body>
+</html>

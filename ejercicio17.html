@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Capitalizar Cadena</title>
+</head>
+<body>
+    <h1>Capitalizar Cadena</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <form id="formCapitalizar">
+            <tr>
+                <th colspan="2">Convirtiendo en mayuscula la primer letra de la Cadena</th>
+            </tr>
+            <tr>
+                <td><label for="capitalizarArreglo">Ingresa la cadena de texto:</td></label>
+                <td><input type="text" id="capitalizarArreglo" name="capitalizarArreglo" required></td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td><div name="lblMostrar" id="lblMostrar"></div></td>
+            </tr>
+            <tr>
+                <td><a href="index.html" class="boton verde">Regresar</a></td>
+                <td><button type="submit" class="boton verde">Capitalizar Arreglo</button></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        document.getElementById('formCapitalizar').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener el texto ingresado
+            const cadena = document.getElementById('capitalizarArreglo').value.trim();
+
+            // Validar que la cadena no esté vacía
+            if (!cadena) {
+                document.getElementById('lblMostrar').textContent = 'Por favor, ingresa una cadena de texto.';
+            } else {
+                const resultado = capitalizar(cadena);
+                document.getElementById('lblMostrar').textContent = resultado;
+            }
+        });
+
+        function capitalizar(cadena) {
+            // Separar la cadena en palabras
+            const palabras = cadena.split(' ');
+
+            // Capitalizar la primera letra de cada palabra y concatenar con el resto de la palabra
+            const palabrasCapitalizadas = palabras.map(palabra => {
+                return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase();
+            });
+
+            // Unir las palabras capitalizadas en una cadena
+            return palabrasCapitalizadas.join(' ');
+        }
+    </script>
+</body>
+</html>

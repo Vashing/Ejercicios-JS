@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Remover Ceros</title>
+</head>
+<body>
+    <h1>Remover Ceros de un arreglo</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <form id="formCeros">
+            <tr>
+                <th colspan="2">Removedor de Ceros de un Arreglo</th>
+            </tr>
+            <tr>
+                <td>Ingresa los números separados por comas:</td>
+                <td><input type="text" id="nceroArreglo" name="nceroArreglo" required></td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td><div name="lblMostrar" id="lblMostrar"></div></td>
+            </tr>
+            <tr>
+                <td><a href="index.html" class="boton verde">Regresar</a></td>
+                <td><button type="submit" class="boton verde">Remover 0</button></td>
+            </tr>
+            <tr>
+                <td colspan="2">Con la funcion que tiene elimina el Número 0, siempre y cuando el arreglo vaya desde el 0 hasta el 9</td>
+            </tr>
+            <tr>
+                <td colspan="2">Ademas de que si el 0 lo acompaña otro número como el 10, eliminara todo el numero</td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        document.getElementById('formCeros').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener los números ingresados y eliminar espacios adicionales
+            const numeros = document.getElementById('nceroArreglo').value
+                .split(',')
+                .map(num => num.trim())
+                .map(Number);
+
+            // Verificar que todos los elementos son números válidos
+            if (numeros.some(isNaN)) {
+                document.getElementById('lblMostrar').textContent = 'Por favor, ingresa un arreglo de números válido.';
+            } else {
+                const producto = removerCeros(numeros);
+                document.getElementById('lblMostrar').textContent = `El producto de los números es: ${producto}`;
+            }
+        });
+        /*
+        function removerCeros(arr) {
+        return arr.filter(num => num !== 0);
+        }
+        */
+        //Esta funcion nos sirve para eliminar cualquier numero 0, ya sea ingresado de manera solitaria o acompañado de otro numero ej = 10
+        function removerCeros(arr) {
+        return arr.filter(num => !num.toString().includes('0'));
+        }
+        
+    </script>
+</body>
+</html>

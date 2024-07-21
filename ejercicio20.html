@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Transformar Cadena</title>
+</head>
+<body>
+    <h1>Transformar Cadena</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <form id="formTransformar">
+            <tr>
+                <th colspan="2">Suma de un Arreglo</th>
+            </tr>
+            <tr>
+                <td><label for="transformarArreglo">Ingresa la cadena de texto:</label></td>
+                <td><input type="text" id="transformarArreglo" name="transformarArreglo" required></td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td><div name="lblMostrar" id="lblMostrar"></div></td>
+            </tr>
+            <tr>
+                <td><a href="index.html" class="boton verde">Regresar</a></td>
+                <td><button type="submit" class="boton verde">Transformar Arreglo</button></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+            document.getElementById('formTransformar').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Obtener el texto ingresado
+            const cadena = document.getElementById('transformarArreglo').value.trim();
+
+            // Validar que la cadena no esté vacía
+            if (!cadena) {
+                document.getElementById('lblMostrar').textContent = 'Por favor, ingresa una cadena de texto.';
+            } else {
+                const resultado = password(cadena);
+                document.getElementById('lblMostrar').textContent = resultado;
+            }
+        });
+
+        function password(cadena) {
+            // Convertir a minúsculas y eliminar espacios en blanco
+            let nuevaCadena = cadena.toLowerCase().replace(/\s+/g, '');
+
+            // Reemplazar caracteres específicos
+            nuevaCadena = nuevaCadena.replace(/a/g, '4')
+                                    .replace(/e/g, '3')
+                                    .replace(/i/g, '1')
+                                    .replace(/o/g, '0');
+
+            return nuevaCadena;
+        }
+
+    </script>
+</body>
+</html>

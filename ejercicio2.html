@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculando los Impuestos</title>
+</head>
+<script src="code.js"></script>
+<body>
+    <h1>Ejercicio 2</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <tr>
+            <th colspan="2">Calcular Impuestos</th>
+        </tr>
+        <tr>
+            <td>Edad</td>
+            <td><input type="number" name="lblEdad" id="lblEdad" min="1" pattern="^[0-9]+" step="1"></td>
+        </tr>
+        <tr>
+            <td>Ingresos</td>
+            <td><input type="number" name="lblIngresos" id="lblIngresos"></td>
+        </tr>
+        <tr>
+            <td><a href="index.html" class="boton verde">Regresar</a></td>
+            <td><a href="" class="boton verde" onclick="calcularImpuesto(edad, ingresos)">Validar</a></td>
+        </tr>
+    </table>
+</body>
+</html>

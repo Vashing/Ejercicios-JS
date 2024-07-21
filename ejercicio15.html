@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Transcribir Cadena</title>
+</head>
+<body>
+    <h1>Transcribir Cadena</h1>
+    <table class="tbPrincipal" id="tbPrincipal">
+        <form id="formCadena">
+            <tr>
+                <th colspan="2">Reemplazando Letras por otras Letras</th>
+            </tr>
+            <tr>
+                <td>Ingresa la cadena de texto:</td>
+                <td><input type="text" id="cadenaArreglo" name="cadenaArreglo" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">Letras Reemplazadas</td>
+            </tr>
+                <td>G = C</td>
+                <td>C = G</td>
+            </tr>
+            <tr>
+                
+                <td>T = A</td>
+                <td>A = U</td>
+            </tr>
+            <tr>
+                <td>Resultado</td>
+                <td><div name="lblMostrar" id="lblMostrar"></div></td>
+            </tr>
+            <tr>
+                <td><a href="index.html" class="boton verde">Regresar</a></td>
+                <td><button type="submit" class="boton verde">Transcribir</button></td>
+            </tr>
+        </form>
+    </table>
+    <script>
+    document.getElementById('formCadena').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        // Obtener el texto ingresado
+        const cadena = document.getElementById('cadenaArreglo').value.trim();
+    
+        // Validar que la cadena no esté vacía y solo contenga las letras permitidas
+        if (!cadena || /[^CGTA]/i.test(cadena)) {
+            document.getElementById('lblMostrar').textContent = 'Por favor, ingresa una cadena válida que contenga solo las letras C, G, T, A.';
+        } else {
+            const resultado = transcribir(cadena);
+            document.getElementById('lblMostrar').textContent = `La cadena transcrita es: ${resultado}`;
+        }
+    });
+    
+    function transcribir(cadena) {
+        // Crear un objeto de mapeo para las transcripciones
+        const transcripciones = {
+            'C': 'G',
+            'G': 'C',
+            'T': 'A',
+            'A': 'U'
+        };
+    
+        // Crear la cadena transcrita reemplazando cada letra según el mapeo
+        let cadenaTranscrita = '';
+        for (let i = 0; i < cadena.length; i++) {
+            const letra = cadena[i].toUpperCase();
+            if (transcripciones[letra]) {
+                cadenaTranscrita += transcripciones[letra];
+            }
+        }
+    
+        return cadenaTranscrita;
+    }</script>
+</body>
+</html>

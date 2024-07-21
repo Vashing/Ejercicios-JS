@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculando el IMC</title>
+</head>
+<script src="code.js"></script>
+<body>
+    <h1>Ejercicio 3</h1>
+
+    <table class="tbPrincipal" id="tbPrincipal">
+        <tr>
+            <th colspan="2">Calcular el IMC</th>
+        </tr>
+        <tr>
+            <td>Peso</td>
+            <td><input type="number" name="lblPeso" id="lblPeso" min="0" step="0.01" placeholder="Peso en Kg = 1.7"></td>
+        </tr>
+        <tr>
+            <td>Altura</td>
+            <td><input type="number" name="lblAltura" id="lblAltura" min="1" pattern="^[0-9]+" step="1" placeholder="Altura en Centimetros"></td>
+        </tr>
+        <tr>
+            <td><a href="index.html" class="boton verde">Regresar</a></td>
+            <td><a href="" class="boton verde" onclick="calcularIMC(peso, altura)">Calcular IMC</a></td>
+        </tr>
+    </table>
+</body>
+</html>
